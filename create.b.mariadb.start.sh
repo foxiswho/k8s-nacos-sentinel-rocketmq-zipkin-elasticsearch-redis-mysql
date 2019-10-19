@@ -2,6 +2,7 @@
 
 DIR=$(cd $(dirname $0); pwd)
 
+# https://downloads.mariadb.org/mariadb/repositories/#mirror=exascale 
 
 rm -rf /etc/yum.repos.d/mariadb.repo
 cat <<EOF > /etc/yum.repos.d/mariadb.repo
