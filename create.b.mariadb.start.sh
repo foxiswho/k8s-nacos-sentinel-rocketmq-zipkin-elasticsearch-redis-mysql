@@ -51,7 +51,7 @@ fi
 
 
 
-docker pull mariadb:latest
+docker pull mariadb:10.4
 
 mkdir -p ${DIR}/mariadb/data
 mkdir -p ${DIR}/mariadb/mariadb.conf.d
