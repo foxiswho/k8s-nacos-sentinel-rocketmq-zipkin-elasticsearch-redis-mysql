@@ -9,7 +9,7 @@ if grep -Eq "CentOS Linux release 8" /etc/*-release; then
 fi
 
 rm -rf /etc/yum.repos.d/mariadb.repo
-if [[ "${OS_VER}"x == "CentOS8"x  ]]; then
+if [[ "${OS_VER}"x = "CentOS8"x  ]]; then
 
 # https://downloads.mariadb.org/mariadb/repositories/#mirror=exascale
 
