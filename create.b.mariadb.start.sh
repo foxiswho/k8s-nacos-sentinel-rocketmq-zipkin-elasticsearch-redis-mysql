@@ -64,32 +64,69 @@ kubectl create -f  ${DIR}/mariadb/service.yml
 kubectl create -f  ${DIR}/mariadb/pod.yml
 
 echo "等待 mariadb pod 容器启动成功"
-echo "60 秒等待时间"
+echo "180 秒等待时间"
 
 kubectl get pod
 sleep 10s
 
+
+kubectl get pod
+
+echo "150 秒等待时间"
+sleep 10s
+
+kubectl get pod
+
+echo "140 秒等待时间"
+sleep 10s
+
+kubectl get pod
+
+echo "130 秒等待时间"
+sleep 10s
+
+echo "120 秒等待时间"
+sleep 10s
+
+echo "110 秒等待时间"
+sleep 10s
+
+
+echo "100 秒等待时间"
+sleep 10s
+
+echo "90 秒等待时间"
+sleep 10s
+
+echo "80 秒等待时间"
+sleep 10s
+
+echo "70 秒等待时间"
+sleep 10s
+
+echo "60 秒等待时间"
+sleep 10s
 
 kubectl get pod
 
 echo "50 秒等待时间"
 sleep 10s
 
-kubectl get pod
-
 echo "40 秒等待时间"
 sleep 10s
-
-kubectl get pod
 
 echo "30 秒等待时间"
 sleep 10s
 
-kubectl get pod
-
 echo "20 秒等待时间"
+sleep 10s
+
+
+echo "10 秒等待时间"
+sleep 10s
+
 # 这里的休眠只是让数据库容器 尽快创建成功
-sleep 20s
+sleep 10s
 
 kubectl get pod
 
