@@ -29,7 +29,10 @@ gpgcheck=1
 ```
 执行命令
 ```bash
-dnf install  MariaDB-client --disablerepo=AppStream  -y
+dnf clean all && \
+dnf makecache && \
+dnf repolist && \
+dnf -y install  MariaDB-client --disablerepo=AppStream
 ```
 
 ## 服务器IP 说明
