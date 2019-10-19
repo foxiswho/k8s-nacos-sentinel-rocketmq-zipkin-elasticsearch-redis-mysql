@@ -1,10 +1,35 @@
 #!/usr/bin/env bash
 
 DIR=$(cd $(dirname $0); pwd)
-
-# https://downloads.mariadb.org/mariadb/repositories/#mirror=exascale 
+OS_VER="CentOS7"
+if grep -Eq "CentOS Linux release 8" /etc/*-release; then
+      echo "CentOS Linux release 8";
+      cat /etc/redhat-release
+      OS_VER="CentOS8"
+fi
 
 rm -rf /etc/yum.repos.d/mariadb.repo
+if [[ "$OS_VER"x != "CentOS8"x  ]]; then
+
+# https://downloads.mariadb.org/mariadb/repositories/#mirror=exascale
+
+cat <<EOF > /etc/yum.repos.d/mariadb.repo
+[mariadb]
+name = MariaDB
+baseurl = http://mirrors.aliyun.com/mariadb/yum/10.4/centos8-amd64/
+gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+enabled=1
+gpgcheck=1
+EOF
+
+dnf clean all
+dnf makecache
+dnf repolist
+
+dnf install -y MariaDB-client
+
+else
+
 cat <<EOF > /etc/yum.repos.d/mariadb.repo
 [mariadb]
 name = MariaDB
@@ -18,8 +43,13 @@ yum clean all
 yum makecache
 yum repolist
 
-
 yum install -y MariaDB-client
+
+fi
+
+
+
+
 
 docker pull mariadb:latest
 
