@@ -13,9 +13,35 @@ k8s 开发 `单服务器` 部署
 Kubernetes(K8s) 1.14.3
 
 服务器IP：`192.168.0.254`
+## 命令不适应  centos 8
+https://www.mariadb.org/mariadb/repositories/#distro=CentOS&distro_release=centos8-amd64--centos8&mirror=exascale&version=10.4
+
+如果想要使用 请修改`create.b.mariadb.start.sh`中 `/etc/yum.repos.d/mariadb.repo` 部分如下
+```bash
+[mariadb]
+name = MariaDB
+
+#baseurl = http://mirrors.aliyun.com/mariadb/yum/10.4/centos7-amd64/
+baseurl = http://mirrors.aliyun.com/mariadb/yum/10.4/centos8-amd64/
+gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+enabled=1
+gpgcheck=1
+```
+执行命令
+```bash
+dnf clean all && \
+dnf makecache && \
+dnf repolist && \
+dnf -y install  MariaDB-client --disablerepo=AppStream
+```
 
 ## 服务器IP 说明
 如果更改了服务器IP 为其他IP，那么请全局全部替换成你改的IP
+
+## 如果重启后 不需要自动拉取新镜像，可以使用如下命令解决
+```bash
+find ./ -name "*yml" -type f -exec sed -i 's/imagePullPolicy/#imagePullPolicy/g' {} 
+```
 
 # 如何安装 k8s 
 请看 最近写的一篇文章，
