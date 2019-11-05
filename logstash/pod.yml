@@ -19,7 +19,7 @@ spec:
       containers:
         - name: logstash
           image: foxiswho/elk:logstash-7.4.0
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           resources:
             limits:
               cpu: 450m
