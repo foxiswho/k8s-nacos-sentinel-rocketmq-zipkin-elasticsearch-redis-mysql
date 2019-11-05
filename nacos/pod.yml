@@ -13,7 +13,7 @@ spec:
       labels:
         app: nacos
       annotations:
-        pod.beta.kubernetes.io/initialized: "true"
+        pod.alpha.kubernetes.io/initialized: "true"
     spec:
       affinity:
         podAntiAffinity:
@@ -23,7 +23,7 @@ spec:
                   - key: "app"
                     operator: In
                     values:
-                      - nacos-headless
+                      - nacos
               topologyKey: "kubernetes.io/hostname"
       containers:
         - name: nacos
@@ -31,7 +31,7 @@ spec:
           image: nacos/nacos-server:latest
           resources:
             requests:
-              memory: 1024Mi
+              memory: 2048Mi
               cpu: 400m
           ports:
             - containerPort: 8848
