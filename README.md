@@ -197,7 +197,7 @@ root/root
 
 nacos/nacos
 
->`nacos_devtest` 为 nacos 服务注册发现 数据库
+>`nacos` 为 nacos 服务注册发现 数据库
 
 ## 目录
 

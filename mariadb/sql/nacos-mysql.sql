@@ -3,10 +3,10 @@
 grant all on *.* to 'nacos'@'%' identified by 'nacos';
 flush privileges;
 
-CREATE DATABASE IF NOT EXISTS nacos_devtest
+CREATE DATABASE IF NOT EXISTS nacos
 default charset utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-use nacos_devtest;
+use nacos;
 
 /******************************************/
 /*   数据库全名 = nacos_config   */
