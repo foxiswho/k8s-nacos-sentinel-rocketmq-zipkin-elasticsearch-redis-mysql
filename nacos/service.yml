@@ -4,7 +4,7 @@ kind: Service
 metadata:
   name: nacos
   labels:
-    app: nacos-headless
+    app: nacos
 spec:
   type: NodePort
   ports:
