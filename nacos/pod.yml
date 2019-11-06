@@ -80,6 +80,9 @@ spec:
               value: "hostname"
             - name: NACOS_SERVERS
               value: "nacos-0.nacos.default.svc.cluster.local:8848 nacos-1.nacos.default.svc.cluster.local:8848 nacos-2.nacos.default.svc.cluster.local:8848"
+            - name: JAVA_OPT_EXT
+              value: -Dnacos.server.ip=192.168.0.254 --nacos.server.ip=192.168.0.254
+
           volumeMounts:
             - name: vol-logs
               mountPath: /home/nacos/logs
