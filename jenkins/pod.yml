@@ -4,7 +4,7 @@ metadata:
   name: jenkins
   labels:
     app: jenkins
-#  namespace: default
+
 spec:
   serviceName: jenkins
   replicas: 1

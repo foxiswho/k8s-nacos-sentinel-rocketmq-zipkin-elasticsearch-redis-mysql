@@ -4,7 +4,7 @@ metadata:
   name: logstash
   labels:
     app: logstash
-#  namespace: default
+
 spec:
   serviceName: logstash
   replicas: 1

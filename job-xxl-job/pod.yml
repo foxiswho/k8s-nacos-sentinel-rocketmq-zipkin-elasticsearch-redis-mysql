@@ -4,7 +4,7 @@ metadata:
   name: xxl-job
   labels:
     app: xxl-job
-#  namespace: default
+
 spec:
   serviceName: xxl-job
   replicas: 1

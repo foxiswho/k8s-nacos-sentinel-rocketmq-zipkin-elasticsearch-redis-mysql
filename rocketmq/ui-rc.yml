@@ -4,7 +4,7 @@ metadata:
   name: rmqui
   labels:
     app: rmqui
-#  namespace: default
+
 spec:
   serviceName: rmqui
   replicas: 1

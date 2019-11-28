@@ -4,7 +4,7 @@ metadata:
   name: rmqbroker-slave
   labels:
     app: rmqbroker-slave
-#  namespace: default
+
 spec:
   serviceName: rmqbroker-slave
   replicas: 1

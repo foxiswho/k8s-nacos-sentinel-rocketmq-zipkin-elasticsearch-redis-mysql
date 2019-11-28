@@ -1,11 +1,15 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  #  namespace: default
+
   name: redis
   labels:
     app: redis
+  annotations:
+    security.alpha.kubernetes.io/unsafe-sysctls: net.core.somaxconn=65535
 spec:
+  securityContext:
+    privileged: true
   serviceName: redis
   replicas: 1
   selector:
@@ -15,6 +19,9 @@ spec:
     metadata:
       labels:
         app: redis
+        net:
+          core:
+            somaxconn=511:
     spec:
       containers:
         - name: redis
@@ -31,6 +38,10 @@ spec:
             - name: TZ
               value: Asia/Shanghai
           command: ["/bin/bash","redis-server","/usr/local/etc/redis/redis.conf","--appendonly yes"]
+#          lifecycle:
+#            postStart:
+#              exec:
+#                command: ["/bin/bash", "-c", "echo 511 > /proc/sys/net/core/somaxconn; echo never > /sys/kernel/mm/transparent_hugepage/enabled;"]
           ports:
             - containerPort: 6379
           volumeMounts:
