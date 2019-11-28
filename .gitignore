@@ -8,3 +8,16 @@
 docker/mysql-master/mysql
 docker/mysql-master/nacos*
 docker/mysql-master/performance*
+
+elasticsearch/logs
+elasticsearch/data
+
+nacos/logs-nacos
+
+rocketmq/logs
+rocketmq/logs-b
+rocketmq/logs-b-s
+rocketmq/logs-ui
+rocketmq/store
+rocketmq/store-b
+rocketmq/store-b-s

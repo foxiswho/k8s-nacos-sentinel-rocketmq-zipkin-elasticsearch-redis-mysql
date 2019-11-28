@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: xxl-job
-          image: xuxueli/xxl-job-admin:2.1.0
+          image: xuxueli/xxl-job-admin:2.1.1
           imagePullPolicy: IfNotPresent
           resources:
             limits:
