@@ -59,7 +59,7 @@ X-Real-Ip: 10.244.0.1
 http://192.168.0.254:5580
 ```
 如图
-![avatar](./doc/images/traefik.png)
+![avatar](../doc/images/traefik.png)
 
 ## 案例说明
 假设 k8s 有后端服务`demo.yaml` `whoami` 且 `POD` 端口为 `80` 那么如何对外绑定 网址路由呢。
