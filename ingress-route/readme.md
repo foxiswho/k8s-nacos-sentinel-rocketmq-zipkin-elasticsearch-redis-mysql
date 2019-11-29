@@ -60,3 +60,49 @@ http://192.168.0.254:5580
 ```
 如图
 ![avatar](./doc/images/traefik.png)
+
+## 案例说明
+假设 k8s 有后端服务`demo.yaml` `whoami` 且 `POD` 端口为 `80` 那么如何对外绑定 网址路由呢。
+
+在 `demo-ingress-route.yaml` 文件中可以看到详细的配置信息(如下)
+```yaml
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: simpleingressroute
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`your.domain.com`) && PathPrefix(`/notls`)
+      kind: Rule
+      services:
+        - name: whoami
+          port: 80
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingressroutetls
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`your.domain.com`) && PathPrefix(`/tls`)
+      kind: Rule
+      services:
+        - name: whoami
+          port: 80
+  tls:
+    certResolver: default
+```
+第一个 `kind: IngressRoute` 路由信息
+
+当域名是`your.domain.com` 
+
+且 后面的 URL 链接是 `/notls` 开头的 走 `whoami` 这个 pod 并且指定端口为 `80` 端口
+
+当然如果 你不需要 URL 开头链接，那么你把 `&& PathPrefix(notls)` 去掉就可以了
