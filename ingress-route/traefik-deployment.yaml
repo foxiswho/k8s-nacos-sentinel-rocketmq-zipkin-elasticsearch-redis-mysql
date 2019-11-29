@@ -59,12 +59,15 @@ spec:
     - protocol: TCP
       name: web
       port: 8000
-      nodePort: 8900
+      nodePort: 80
     - protocol: TCP
       name: admin
       port: 8080
+      nodePort: 5580
     - protocol: TCP
       name: websecure
       port: 4443
+      #nodePort: 443
+      #如果 你需要 k8s 支持 https 请去除 nodePort: 443 前面的#号，并配置相关证书，这里并没有详细的设置证书
   selector:
     app: traefik
