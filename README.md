@@ -10,7 +10,7 @@ k8s 开发 `单服务器` 部署
 
 内核： 5.1.9-1.el7.elrepo.x86_64
 
-Kubernetes(K8s) 1.14.3
+Kubernetes(K8s) 1.16.3
 
 服务器IP：`192.168.0.254`
 ## 命令不适应  centos 8
