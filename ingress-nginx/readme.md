@@ -75,10 +75,10 @@ kubectl create secret tls foxwho-secret \
 ```xml
 
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-#  namespace: default
+
   name: test-ingress
   annotations:
     kubernetes.io/ingress.class: "nginx"

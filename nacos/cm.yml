@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: nacos-cm
 data:
-  mysql.master.db.name: "nacos_devtest"
+  mysql.master.db.name: "nacos"
   mysql.master.port: "3306"
   mysql.slave.port: "3306"
   mysql.master.user: "root"

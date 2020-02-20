@@ -4,7 +4,7 @@ metadata:
   name: mariadb
   labels:
     app: mariadb
-#  namespace: default
+
 spec:
   serviceName: mariadb
   replicas: 1
@@ -31,7 +31,7 @@ spec:
       containers:
         - name: mariadb
           image: mariadb:10.4
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           resources:
             limits:
               cpu: 450m

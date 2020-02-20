@@ -4,7 +4,7 @@ metadata:
   name: xxl-job
   labels:
     app: xxl-job
-#  namespace: default
+
 spec:
   serviceName: xxl-job
   replicas: 1
@@ -18,8 +18,8 @@ spec:
     spec:
       containers:
         - name: xxl-job
-          image: xuxueli/xxl-job-admin:2.1.0
-          imagePullPolicy: Always
+          image: xuxueli/xxl-job-admin:2.1.2
+          imagePullPolicy: IfNotPresent
           resources:
             limits:
               cpu: 450m

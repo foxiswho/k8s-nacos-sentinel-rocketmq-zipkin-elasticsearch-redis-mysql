@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  #  namespace: default
+
   name: registry
   labels:
     app: registry
@@ -37,5 +37,5 @@ spec:
       volumes:
         - name: vol-data
           hostPath:
-              path: /www/k8s/foxdev/registry/data
+              path: /www/k8s/foxdev/registry-docker/data
               type: Directory

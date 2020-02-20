@@ -4,7 +4,7 @@ metadata:
   name: rmqbroker-slave
   labels:
     app: rmqbroker-slave
-#  namespace: default
+
 spec:
   serviceName: rmqbroker-slave
   replicas: 1
@@ -19,7 +19,7 @@ spec:
       containers:
         - name: rmqbroker-slave
           image: foxiswho/rocketmq:broker
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           resources:
             limits:
               cpu: 450m

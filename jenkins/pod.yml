@@ -4,7 +4,7 @@ metadata:
   name: jenkins
   labels:
     app: jenkins
-#  namespace: default
+
 spec:
   serviceName: jenkins
   replicas: 1
@@ -19,7 +19,7 @@ spec:
       containers:
         - name: jenkins
           image: jenkins/jenkins:lts
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           resources:
             limits:
               cpu: 450m

@@ -1,0 +1,47 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingressroutefoo
+
+spec:
+  entryPoints:
+    - web
+  routes:
+    # Match is the rule corresponding to an underlying router.
+    # Later on, match could be the simple form of a path prefix, e.g. just "/bar",
+    # but for now we only support a traefik style matching rule.
+    - match: Host(`foo.com`) && PathPrefix(`/bar`)
+      # kind could eventually be one of "Rule", "Path", "Host", "Method", "Header",
+      # "Parameter", etc, to support simpler forms of rule matching, but for now we
+      # only support "Rule".
+      kind: Rule
+      # (optional) Priority disambiguates rules of the same length, for route matching.
+      priority: 12
+      services:
+        - name: whoami
+          port: 80
+          # (default 1) A weight used by the weighted round-robin strategy (WRR).
+          weight: 1
+          # (default true) PassHostHeader controls whether to leave the request's Host
+          # Header as it was before it reached the proxy, or whether to let the proxy set it
+          # to the destination (backend) host.
+          passHostHeader: true
+          responseForwarding:
+            # (default 100ms) Interval between flushes of the buffered response body to the client.
+            flushInterval: 100ms
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: ingressroutetcpfoo.crd
+
+spec:
+  entryPoints:
+    - footcp
+  routes:
+    # Match is the rule corresponding to an underlying router.
+    - match: HostSNI(`*`)
+      services:
+        - name: whoamitcp
+          port: 8080
