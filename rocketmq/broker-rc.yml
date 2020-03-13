@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: rmqbroker
-          image: foxiswho/rocketmq:broker
+          image: foxiswho/rocketmq:broker-4.6.1
           imagePullPolicy: IfNotPresent
           resources:
             limits:
@@ -31,8 +31,8 @@ spec:
             - name: TZ
               value: Asia/Shanghai
             - name: JAVA_OPT_EXT
-              value:  -Duser.home=/opt -server -Xms1700m -Xmx1700m
-          command: ["/bin/bash","mqbroker","-c","/etc/rocketmq/broker.conf","-n","rocketmq:9876","autoCreateTopicEnable=true"]
+              value:  -Duser.home=/opt
+          command: ["sh","mqbroker","-c","/etc/rocketmq/broker.conf","-n","rocketmq:9876","autoCreateTopicEnable=true"]
           ports:
             - containerPort: 10909
             - containerPort: 10911

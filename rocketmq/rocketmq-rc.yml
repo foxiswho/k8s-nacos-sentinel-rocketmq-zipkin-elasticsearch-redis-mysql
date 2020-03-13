@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: rocketmq
-          image: foxiswho/rocketmq:server
+          image: foxiswho/rocketmq:server-4.6.1
           imagePullPolicy: IfNotPresent
           resources:
             limits:
@@ -33,7 +33,7 @@ spec:
             - name: JAVA_OPT
               value: -Duser.home=/opt
             - name: JAVA_OPT_EXT
-              value: -server -Xms2000m -Xmx2000m -Xmn256m
+              value:  -Xmn256m
           ports:
             - containerPort: 9876
           volumeMounts:

@@ -38,9 +38,10 @@ dnf -y install  MariaDB-client --disablerepo=AppStream
 ## 服务器IP 说明
 如果更改了服务器IP 为其他IP，那么请全局全部替换成你改的IP
 
-## 如果重启后 不需要自动拉取新镜像，可以使用如下命令解决
+## 镜像策略
+更改镜像策略为 如果本地有镜像, 则使用本地的镜像, 本地不存在时拉取镜像
 ```bash
-find ./ -name "*yml" -type f -exec sed -i 's/imagePullPolicy/#imagePullPolicy/g' {} 
+find ./ -name "*yml" -type f -exec sed -i 's/imagePullPolicy: Always/imagePullPolicy: IfNotPresent/g' {} \;
 ```
 
 # 如何安装 k8s 
