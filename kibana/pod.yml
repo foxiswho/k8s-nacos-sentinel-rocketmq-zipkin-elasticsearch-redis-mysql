@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: kibana
-          image: foxiswho/elk:kibana-7.4.0
+          image: foxiswho/elk:kibana-7.6.1
           imagePullPolicy: IfNotPresent
           resources:
             limits:
