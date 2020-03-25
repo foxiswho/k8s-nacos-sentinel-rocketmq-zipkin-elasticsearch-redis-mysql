@@ -8,8 +8,8 @@ metadata:
   annotations:
     security.alpha.kubernetes.io/unsafe-sysctls: net.core.somaxconn=65535
 spec:
-  securityContext:
-    privileged: true
+  #securityContext:
+    #privileged: true
   serviceName: redis
   replicas: 1
   selector:
