@@ -19,9 +19,9 @@ spec:
     metadata:
       labels:
         app: redis
-        net:
-          core:
-            somaxconn=511:
+        #net:
+          #core:
+            #somaxconn=511:
     spec:
       containers:
         - name: redis
