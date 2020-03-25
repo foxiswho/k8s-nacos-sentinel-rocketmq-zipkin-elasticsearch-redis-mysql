@@ -23,7 +23,7 @@ spec:
                   - key: "app"
                     operator: In
                     values:
-                      - nacos
+                      - nacos-headless
               topologyKey: "kubernetes.io/hostname"
       containers:
         - name: nacos
