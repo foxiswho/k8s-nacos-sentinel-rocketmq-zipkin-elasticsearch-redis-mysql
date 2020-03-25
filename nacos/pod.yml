@@ -23,7 +23,7 @@ spec:
                   - key: "app"
                     operator: In
                     values:
-                      - nacos-headless
+                      - nacos
               topologyKey: "kubernetes.io/hostname"
       containers:
         - name: nacos
@@ -32,44 +32,34 @@ spec:
           resources:
             requests:
               memory: 2048Mi
-              cpu: 400m
+              cpu: 500m
           ports:
             - containerPort: 8848
               name: client
           env:
             - name: NACOS_REPLICAS
               value: "3"
-            - name: MYSQL_MASTER_SERVICE_HOST
+            - name: MYSQL_SERVICE_HOST
               valueFrom:
                   configMapKeyRef:
                     name: nacos-cm
                     key: mysql.master.host
-            - name: MYSQL_SLAVE_SERVICE_HOST
-              valueFrom:
-                  configMapKeyRef:
-                    name: nacos-cm
-                    key: mysql.slave.host
-            - name: MYSQL_MASTER_SERVICE_DB_NAME
+            - name: MYSQL_SERVICE_DB_NAME
               valueFrom:
                 configMapKeyRef:
                   name: nacos-cm
                   key: mysql.master.db.name
-            - name: MYSQL_MASTER_SERVICE_PORT
+            - name: MYSQL_SERVICE_PORT
               valueFrom:
                 configMapKeyRef:
                   name: nacos-cm
                   key: mysql.master.port
-            - name: MYSQL_SLAVE_SERVICE_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: nacos-cm
-                  key: mysql.slave.port
-            - name: MYSQL_MASTER_SERVICE_USER
+            - name: MYSQL_SERVICE_USER
               valueFrom:
                 configMapKeyRef:
                   name: nacos-cm
                   key: mysql.master.user
-            - name: MYSQL_MASTER_SERVICE_PASSWORD
+            - name: MYSQL_SERVICE_PASSWORD
               valueFrom:
                 configMapKeyRef:
                   name: nacos-cm
