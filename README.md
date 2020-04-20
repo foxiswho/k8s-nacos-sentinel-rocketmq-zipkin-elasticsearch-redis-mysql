@@ -312,13 +312,13 @@ https://nacos.io/zh-cn/docs/console-guide.html
 
 执行完成后,访问控制台网址即可操作`naocs`配置了
 ```shell
-http://192.168.0.254:8848/nacos
+http://192.168.0.254:30848/nacos
 ```
 ## 测试
 
 ### 服务注册
 ```bash
-curl -X PUT 'http://192.168.0.254:8848/nacos/v1/ns/instance?serviceName=test.fox&ip=192.0.1.10&port=8080'
+curl -X PUT 'http://192.168.0.254:30848/nacos/v1/ns/instance?serviceName=test.fox&ip=192.0.1.10&port=8080'
 ```
 返回
 ```bash
@@ -326,11 +326,11 @@ ok
 ```
 ### 服务发现
 ```bash
-curl -X GET 'http://192.168.0.254:8848/nacos/v1/ns/instances?serviceName=test.fox'
+curl -X GET 'http://192.168.0.254:30848/nacos/v1/ns/instances?serviceName=test.fox'
 ```
 ### 发布配置
 ```bash
-curl -X POST "http://192.168.0.254:8848/nacos/v1/cs/configs?dataId=test.fox&group=test&content=helloWorld"
+curl -X POST "http://192.168.0.254:30848/nacos/v1/cs/configs?dataId=test.fox&group=test&content=helloWorld"
 ```
 返回
 ```bash
@@ -345,7 +345,7 @@ Group为`test`的配置，
 点击`编辑`，可以看到内容为`helloWorld`
 ### 获取配置
 ```bash
-curl -X GET "http://192.168.0.254:8848/nacos/v1/cs/configs?dataId=test.fox&group=test"
+curl -X GET "http://192.168.0.254:30848/nacos/v1/cs/configs?dataId=test.fox&group=test"
 ```
 返回
 ```bash
@@ -431,7 +431,7 @@ elasticsearch/data      数据目录
 ## 案例
 ### 创建索引
 ```bash
-curl -XPUT http://192.168.0.254:9200/index
+curl -XPUT http://192.168.0.254:30920/index
 ```
 输出
 ```bash
@@ -439,7 +439,7 @@ curl -XPUT http://192.168.0.254:9200/index
 ```
 ### 创建mapping
 ```bash
-curl -XPOST http://192.168.0.254:9200/index/_mapping -H 'Content-Type:application/json' -d'
+curl -XPOST http://192.168.0.254:30920/index/_mapping -H 'Content-Type:application/json' -d'
 {
         "properties": {
             "content": {
@@ -457,33 +457,33 @@ curl -XPOST http://192.168.0.254:9200/index/_mapping -H 'Content-Type:applicatio
 ```
 ### 添加几条数据
 ```bash
-curl -XPOST http://192.168.0.254:9200/index/_create/1?pretty -H 'Content-Type:application/json' -d'
+curl -XPOST http://192.168.0.254:30920/index/_create/1?pretty -H 'Content-Type:application/json' -d'
 {"content":"美国留给伊拉克的是个烂摊子吗"}
 '
 ```
 输出略
 
 ```bash
-curl -XPOST http://192.168.0.254:9200/index/_create/2?pretty -H 'Content-Type:application/json' -d'
+curl -XPOST http://192.168.0.254:30920/index/_create/2?pretty -H 'Content-Type:application/json' -d'
 {"content":"公安部：各地校车将享最高路权"}
 '
 ```
 
 ```bash
-curl -XPOST http://192.168.0.254:9200/index/_create/3?pretty -H 'Content-Type:application/json' -d'
+curl -XPOST http://192.168.0.254:30920/index/_create/3?pretty -H 'Content-Type:application/json' -d'
 {"content":"中韩渔警冲突调查：韩警平均每天扣1艘中国渔船"}
 '
 ```
 
 
 ```bash
-curl -XPOST http://192.168.0.254:9200/index/_create/4?pretty -H 'Content-Type:application/json' -d'
+curl -XPOST http://192.168.0.254:30920/index/_create/4?pretty -H 'Content-Type:application/json' -d'
 {"content":"中国驻洛杉矶领事馆遭亚裔男子枪击 嫌犯已自首"}
 '
 ```
 
 ```bash
-curl -XPOST http://192.168.0.254:9200/index/_create/5?pretty -H 'Content-Type:application/json' -d'
+curl -XPOST http://192.168.0.254:30920/index/_create/5?pretty -H 'Content-Type:application/json' -d'
 {"content":"考验特朗普的时候到了！美盟友率先出手，普京紧跟2记“重拳”"}
 '
 ```
@@ -491,7 +491,7 @@ curl -XPOST http://192.168.0.254:9200/index/_create/5?pretty -H 'Content-Type:ap
 
 ### 查询
 ```bash
-curl -XPOST http://192.168.0.254:9200/index/_search?pretty  -H 'Content-Type:application/json' -d'
+curl -XPOST http://192.168.0.254:30920/index/_search?pretty  -H 'Content-Type:application/json' -d'
 {
     "query" : { "match" : { "content" : "中国" }},
     "highlight" : {
@@ -580,7 +580,7 @@ https://www.elastic.co/guide/en/kibana/current/docker.html
 ## 访问 
 部署成功后就可以直接用浏览器访问了
 ```bash
-http://192.168.0.254:5601
+http://192.168.0.254:30601
 ```
 
 # k8s sentinel 独立部署
@@ -612,7 +612,7 @@ sentinel/logs   日志目录
 
 直接用浏览器访问
 ```bash
-http://192.168.0.254:8280
+http://192.168.0.254:30280
 ```
 
 # k8s zipkin 独立部署
@@ -641,7 +641,7 @@ https://github.com/openzipkin/zipkin/tree/master/zipkin-server
 
 直接用浏览器访问
 ```bash
-http://192.168.0.254:9411
+http://192.168.0.254:30411
 ```
 
 # k8s grafana 独立部署
@@ -663,7 +663,7 @@ http://192.168.0.254:9411
 
 直接用浏览器访问
 ```bash
-http://192.168.0.254:3000
+http://192.168.0.254:30300
 ```
 
 # k8s prometheus 独立部署
@@ -687,7 +687,7 @@ prometheus/conf/prometheus-cluster.yaml 配置文件
 
 直接用浏览器访问
 ```bash
-http://192.168.0.254:9090
+http://192.168.0.254:30909
 ```
 
 #   k8s ingress nginx 独立部署
@@ -773,7 +773,7 @@ http://www.xuxueli.com/xxl-job/#/?id=%e3%80%8a%e5%88%86%e5%b8%83%e5%bc%8f%e4%bb%
 
 直接用浏览器访问
 ```bash
-http://192.168.0.254:6210/xxl-job-admin
+http://192.168.0.254:30820/xxl-job-admin
 ```
 
 ## 查看 pods
