@@ -7,19 +7,33 @@ kubernetes 默认宿主机映射端口 `30000-32767`，有些小伙伴，没有�
 
 对外端口如下：
 > mariadb: 30306
+> 
 > elasticsearch: 30920 30930
+> 
 > kibana: 30601
+> 
 > logstash: 30621
+> 
 > grafana: 30300
+> 
 > jenkins: 30800
+> 
 > xxl-job: 30820
+> 
 > nacos: 30848
+> 
 > prometheus: 30909
+> 
 > redis: 30379
+> 
 > registry: 30500
+> 
 > rocketmq: 30876
+> 
 > rocketmq-ui: 30879
+> 
 > sentinel: 30280
+> 
 > zipkin: 30411
 
 
