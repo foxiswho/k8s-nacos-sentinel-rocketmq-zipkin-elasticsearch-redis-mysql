@@ -12,7 +12,7 @@ spec:
   ports:
     - port: 8080
       targetPort: 8080
-      nodePort: 6210
+      nodePort: 30820
       name: web
   selector:
     app: xxl-job

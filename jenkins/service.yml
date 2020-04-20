@@ -12,11 +12,11 @@ spec:
   ports:
     - port: 8080
       targetPort: 8080
-      nodePort: 58080
+      nodePort: 30800
       name: web
-    - port: 50000
-      targetPort: 50000
-      nodePort: 50000
-      name: web2
+#    - port: 50000
+#      targetPort: 50000
+#      nodePort: 50000
+#      name: web2
   selector:
     app: jenkins

@@ -1,8 +1,33 @@
 # k8s-nacos-sentinel-rocketmq-zipkin-elasticsearch-redis-mysql
 Kubernetes(k8s)-nacos-sentinel-rocketmq-zipkin-elasticsearch-redis-mysql
 
+# 统一使用默认端口
+kubernetes 默认宿主机映射端口 `30000-32767`，有些小伙伴，没有修改 kubernetes 的默认端口，
+或者修改起来 比较麻烦，所以这里改为 把对外端口统一修改。
 
-k8s 开发 `单服务器` 部署
+对外端口如下：
+> mariadb: 30306
+> elasticsearch: 30920 30930
+> kibana: 30601
+> logstash: 30621
+> grafana: 30300
+> jenkins: 30800
+> xxl-job: 30820
+> nacos: 30848
+> prometheus: 30909
+> redis: 30379
+> registry: 30500
+> rocketmq: 30876
+> rocketmq-ui: 30879
+> sentinel: 30280
+> zipkin: 30411
+
+
+# k8s 开发 `单服务器` 部署
+# k8s 开发 `单服务器` 部署
+# k8s 开发 `单服务器` 部署
+
+
 
 # 环境，与系统
 
@@ -66,15 +91,17 @@ https://foxwho.blog.csdn.net/article/details/92137467
 
 # 拉取代码
 
+复制以下整个命令
+
 ```shell
-mkdir -p /www/k8s/
-cd /www/k8s/
+# 创建目录 ，且进入该目录，拉去 代码，设置 sh 末尾 的文件为 可执行文件
 
-git clone https://github.com/foxiswho/k8s-nacos-sentinel-rocketmq-zipkin-elasticsearch-redis-mysql.git foxdev
-
-cd foxdev
-
+mkdir -p /www/k8s/ && cd /www/k8s/  && \
+git clone https://github.com/foxiswho/k8s-nacos-sentinel-rocketmq-zipkin-elasticsearch-redis-mysql.git foxdev && \
+cd foxdev  && \
 chmod +x *sh
+
+
 ```
 
 # 一键部署 即开即用服务
@@ -104,15 +131,20 @@ rocketmq 采用 server:1主,Broker:1主1从模式
 
 ## 相关参数说明
 
-端口： 
+对外端口： 
+>`server:`          宿主机IP:30876
+>`ui:(console)`     宿主机IP:30879
+
+
+内部端口
 >`server:`          宿主机IP:9876
+>`ui:(console)`     宿主机IP:9879
 >`Broker:(master)`  宿主机IP:10909
 >`Broker:(master)`  宿主机IP:10911
 >`Broker:(master)`  宿主机IP:10912
 >`Broker:(slave)`   宿主机IP:10919
 >`Broker:(slave)`   宿主机IP:10921
 >`Broker:(slave)`   宿主机IP:10922
->`ui:(console)`     宿主机IP:8180
 
 
 broker中3个端口说明
@@ -191,6 +223,7 @@ https://nacos.io/zh-cn/docs/what-is-nacos.html
 ## 相关参数说明
 
 端口 3306
+对外端口：30306
 
 账号/密码
 
@@ -228,6 +261,7 @@ nacos/nacos
 ## 相关参数说明 
 
 端口 ：8848
+对外端口：30848
 
 账号/密码
 
@@ -305,6 +339,7 @@ https://hub.docker.com/_/redis
 ## 相关参数说明
 
 端口 6379
+对外端口： 30379
 
 ## 目录
 
@@ -341,6 +376,11 @@ https://github.com/medcl/elasticsearch-analysis-ik
 端口：9200
 
 端口：9300
+
+对外端口：30920
+
+对外端口：30930
+
 
 
 ## 目录说明
@@ -502,6 +542,8 @@ https://www.elastic.co/guide/en/kibana/current/docker.html
 
 端口  5601
 
+对外端口：30601
+
 ## 独立部署 kibana 操作
 直接执行 `根目录`下 `create.elk.kibana.start.sh` 即可
 
@@ -521,6 +563,10 @@ http://192.168.0.254:5601
 ## 相关说明
 端口：8280   web
 端口：8719   api server
+
+对外端口：30280
+对外端口：30719
+
 
 用户名和密码： sentinel/sentinel
 >如果要自定义用户名和密码，请修改sentinel/cm.yml 中的相关参数
@@ -554,6 +600,8 @@ https://github.com/openzipkin/zipkin/tree/master/zipkin-server
 ## 相关说明
 端口：9411
 
+对外端口：30411
+
 ## 独立部署 zipkin 操作
 直接执行 `根目录`下 `create.z.zipkin.start.sh` 即可
 
@@ -574,6 +622,8 @@ http://192.168.0.254:9411
 ## 相关说明
 端口：3000
 
+对外端口：30300
+
 ## 独立部署 grafana 操作
 直接执行 `根目录`下 `create.g.grafana.start.sh` 即可
 
@@ -593,6 +643,8 @@ http://192.168.0.254:3000
 
 ## 相关说明
 端口：9090
+
+对外端口：30909
 
 prometheus/conf/prometheus-cluster.yaml 配置文件
 
@@ -673,7 +725,8 @@ http://www.xuxueli.com/xxl-job/
 http://www.xuxueli.com/xxl-job/#/?id=%e3%80%8a%e5%88%86%e5%b8%83%e5%bc%8f%e4%bb%bb%e5%8a%a1%e8%b0%83%e5%ba%a6%e5%b9%b3%e5%8f%b0xxl-job%e3%80%8b
 
 ## 相关说明
-端口 ：6210
+对外端口：30820
+
 
 容器内端口 ：8080
 

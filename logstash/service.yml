@@ -12,6 +12,6 @@ spec:
   ports:
     - port: 5621
       targetPort: 5621
-      nodePort: 5621
+      nodePort: 30621
   selector:
     app: logstash

@@ -12,6 +12,6 @@ spec:
   ports:
     - port: 9876
       targetPort: 9876
-      nodePort: 9876
+      nodePort: 30876
   selector:
     app: rocketmq

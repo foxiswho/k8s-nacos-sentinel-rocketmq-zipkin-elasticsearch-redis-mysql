@@ -12,6 +12,6 @@ spec:
   ports:
     - port: 9411
       targetPort: 9411
-      nodePort: 9411
+      nodePort: 30411
   selector:
     app: zipkin

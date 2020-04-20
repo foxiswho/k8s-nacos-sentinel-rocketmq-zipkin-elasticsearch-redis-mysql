@@ -12,11 +12,11 @@ spec:
   ports:
     - port: 8280
       targetPort: 8280
-      nodePort: 8280
+      nodePort: 30280
       name: web
     - port: 8719
       targetPort: 8719
-      nodePort: 8719
+      nodePort: 30719
       name: api
   selector:
     app: sentinel

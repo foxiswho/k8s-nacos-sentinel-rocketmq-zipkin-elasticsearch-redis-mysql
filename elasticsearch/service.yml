@@ -12,11 +12,11 @@ spec:
   ports:
     - port: 9200
       targetPort: 9200
-      nodePort: 9200
+      nodePort: 30920
       name: es-9200
     - port: 9300
       targetPort: 9300
-      nodePort: 9300
+      nodePort: 30930
       name: es-9300
   selector:
     app: elasticsearch

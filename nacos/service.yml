@@ -11,7 +11,7 @@ spec:
     - port: 8848
       name: server
       targetPort: 8848
-      nodePort: 8848
+      nodePort: 30848
   selector:
     app: nacos
 
