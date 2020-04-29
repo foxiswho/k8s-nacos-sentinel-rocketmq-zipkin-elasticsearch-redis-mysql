@@ -111,7 +111,7 @@ https://foxwho.blog.csdn.net/article/details/92137467
 # 创建目录 ，且进入该目录，拉去 代码，设置 sh 末尾 的文件为 可执行文件
 
 mkdir -p /www/k8s/ && cd /www/k8s/  && \
-git clone https://github.com/foxiswho/k8s-nacos-sentinel-rocketmq-zipkin-elasticsearch-redis-mysql.git foxdev && \
+git clone https://github.com/foxiswho/k8s-nacos-sentinel-rocketmq-zipkin-elasticsearch-redis-mysql.git foxdev  --depth=1 && \
 cd foxdev  && \
 chmod +x *sh
 
