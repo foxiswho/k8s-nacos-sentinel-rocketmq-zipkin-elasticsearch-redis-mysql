@@ -1,23 +1,22 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-
-  name: registry
+  name: hub
   labels:
-    app: registry
+    app: hub
 spec:
-  serviceName: registry
+  serviceName: hub
   replicas: 1
   selector:
     matchLabels:
-      app: registry
+      app: hub
   template:
     metadata:
       labels:
-        app: registry
+        app: hub
     spec:
       containers:
-        - name: registry
+        - name: hub
           image: registry:latest
           resources:
             limits:
@@ -37,5 +36,5 @@ spec:
       volumes:
         - name: vol-data
           hostPath:
-              path: /www/k8s/foxdev/registry-docker/data
+              path: /www/k8s/foxdev/hub/data
               type: Directory
