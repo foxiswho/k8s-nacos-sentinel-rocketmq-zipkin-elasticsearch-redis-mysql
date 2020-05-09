@@ -8,19 +8,19 @@ metadata:
   labels:
     app: rmqbroker
 spec:
-#  type: NodePort
+  type: NodePort
   ports:
-    - port: 10909
-      targetPort: 10909
-#      nodePort: 10909
+    - port: 30909
+      targetPort: 30909
+      nodePort: 30909
       name: slave-master
-    - port: 10911
-      targetPort: 10911
-#      nodePort: 10911
+    - port: 30911
+      targetPort: 30911
+      nodePort: 30911
       name: listen
-    - port: 10912
-      targetPort: 10912
-#      nodePort: 10912
+    - port: 30912
+      targetPort: 30912
+      nodePort: 30912
       name: ha-service
   selector:
     app: rmqbroker
