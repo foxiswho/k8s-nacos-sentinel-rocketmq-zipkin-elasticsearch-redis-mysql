@@ -45,7 +45,7 @@ spec:
             - name: vol-es
               mountPath: /usr/share/elasticsearch/config/elasticsearch.yml
             - name: vol-synonyms
-              mountPath: /usr/share/elasticsearch/config/synonyms.txt
+              mountPath: /usr/share/elasticsearch/config/analysis
       volumes:
         - name: vol-logs
           hostPath:
@@ -65,5 +65,5 @@ spec:
               type: File
         - name: vol-synonyms
           hostPath:
-              path: /www/k8s/foxdev/elasticsearch/config/synonyms.txt
-              type: File
+              path: /www/k8s/foxdev/elasticsearch/config/analysis
+              type: Directory
