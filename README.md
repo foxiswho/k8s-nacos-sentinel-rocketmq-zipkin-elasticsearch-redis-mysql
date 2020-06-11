@@ -242,6 +242,10 @@ kubectl get rc
 
 https://nacos.io/zh-cn/docs/what-is-nacos.html
 
+nacos-mysql.sql 数据库文件位置
+
+https://github.com/alibaba/nacos/blob/develop/distribution/conf/nacos-mysql.sql
+
 ## 相关参数说明
 
 端口 3306
