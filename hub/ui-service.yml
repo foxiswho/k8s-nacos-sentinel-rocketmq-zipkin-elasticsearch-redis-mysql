@@ -4,9 +4,9 @@ apiVersion: v1
 kind: Service
 metadata:
 
-  name: registry-ui
+  name: hub-ui
   labels:
-    app: registry-ui
+    app: hub-ui
 spec:
   type: NodePort
   ports:
