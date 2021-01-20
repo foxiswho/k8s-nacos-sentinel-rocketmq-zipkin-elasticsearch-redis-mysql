@@ -16,14 +16,14 @@ spec:
         pod.alpha.kubernetes.io/initialized: "true"
     spec:
       affinity:
-        podAntiAffinity:
+        podAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             - labelSelector:
                 matchExpressions:
-                  - key: "app"
+                  - key: app
                     operator: In
                     values:
-                      - nacos-headless
+                      - nacos
               topologyKey: "kubernetes.io/hostname"
       containers:
         - name: nacos
