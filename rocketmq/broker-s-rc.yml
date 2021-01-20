@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: rmqbroker-slave
-          image: foxiswho/rocketmq:4.7.0
+          image: foxiswho/rocketmq:4.8.0
           imagePullPolicy: IfNotPresent
           resources:
             limits:
@@ -33,7 +33,7 @@ spec:
             - name: NAMESRV_ADDR
               value: rocketmq:9876
             - name: JAVA_OPT_EXT
-              value:  -Duser.home=/opt -Xms1024M -Xmx1024M -Xmn256m
+              value:  -Duser.home=/home/rocketmq -Xms1024M -Xmx1024M -Xmn256m
           command: ["sh","mqbroker","-c","/etc/rocketmq/broker-s.conf","-n","rocketmq:9876","autoCreateTopicEnable=true"]
           ports:
             - containerPort: 10919
@@ -41,9 +41,9 @@ spec:
             - containerPort: 10922
           volumeMounts:
             - name: vol-logs
-              mountPath: /opt/logs
+              mountPath: /home/rocketmq/logs
             - name: vol-store
-              mountPath: /opt/store
+              mountPath: /home/rocketmq/store
             - name: vol-broker-s
               mountPath: /etc/rocketmq/broker-s.conf
       volumes:
