@@ -12,18 +12,18 @@ spec:
     - port: 9876
       targetPort: 9876
       nodePort: 30877
-      name: rmqser
-    - port: 40911
-      targetPort: 40911
-      nodePort: 40911
-      name: rmqbroker
-    - port: 41911
-      targetPort: 41911
-      nodePort: 41911
-      name: rmqbrokerslave
-    - port: 42911
-      targetPort: 42911
-      nodePort: 42911
+      name: rmqser2
+    - port: 30961
+      targetPort: 30961
+      nodePort: 30961
+      name: rmqbroker2
+    - port: 30971
+      targetPort: 30971
+      nodePort: 30971
       name: rmqbrokerslave2
+    - port: 30981
+      targetPort: 30981
+      nodePort: 30981
+      name: rmqbrokerslave22
   selector:
     app: rocketmq2

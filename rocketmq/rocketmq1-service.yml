@@ -17,13 +17,13 @@ spec:
       targetPort: 30911
       nodePort: 30911
       name: rmqbroker
-    - port: 31911
-      targetPort: 31911
-      nodePort: 31911
+    - port: 30921
+      targetPort: 30921
+      nodePort: 30921
       name: rmqbrokerslave
-    - port: 32911
-      targetPort: 32911
-      nodePort: 32911
+    - port: 30931
+      targetPort: 30931
+      nodePort: 30931
       name: rmqbrokerslave2
   selector:
     app: rocketmq

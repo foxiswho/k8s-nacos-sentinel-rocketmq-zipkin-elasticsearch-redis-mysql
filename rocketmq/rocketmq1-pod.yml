@@ -86,9 +86,9 @@ spec:
               value: -Duser.home=/home/rocketmq -Xms1024M -Xmx1024M -Xmn256m
           command: [ "sh","-c","mqbroker -c /etc/rocketmq/broker-a-s.conf" ]
           ports:
-            - containerPort: 31909
-            - containerPort: 31911
-            - containerPort: 31912
+            - containerPort: 30919
+            - containerPort: 30921
+            - containerPort: 30922
           volumeMounts:
             - name: vol-logs-as
               mountPath: /home/rocketmq/logs
@@ -113,9 +113,9 @@ spec:
               value: -Duser.home=/home/rocketmq -Xms1024M -Xmx1024M -Xmn256m
           command: [ "sh","-c","mqbroker -c /etc/rocketmq/broker-a-s2.conf" ]
           ports:
-            - containerPort: 32909
-            - containerPort: 32911
-            - containerPort: 32912
+            - containerPort: 30929
+            - containerPort: 30931
+            - containerPort: 30932
           volumeMounts:
             - name: vol-logs-as2
               mountPath: /home/rocketmq/logs
