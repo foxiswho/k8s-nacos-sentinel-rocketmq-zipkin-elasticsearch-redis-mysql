@@ -5,17 +5,11 @@ kubectl delete -f  ui-rc.yml
 kubectl delete -f  ui-service.yml
 
 
-kubectl delete -f  broker-s-rc.yml
-kubectl delete -f  broker-s-service.yml
+kubectl delete -f  rocketmq1-pod.yml
+kubectl delete -f  rocketmq1-service.yml
 
-
-
-kubectl delete -f  broker-rc.yml
-kubectl delete -f  broker-service.yml
-
-
-kubectl delete -f  rocketmq-rc.yml
-kubectl delete -f  rocketmq-service.yml
+kubectl delete -f  rocketmq2-pod.yml
+kubectl delete -f  rocketmq2-service.yml
 
 
 

@@ -1,0 +1,162 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: rocketmq2
+  labels:
+    app: rocketmq2
+
+spec:
+  serviceName: rocketmq2
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rocketmq2
+  template:
+    metadata:
+      labels:
+        app: rocketmq2
+    spec:
+      containers:
+        - name: rocketmq
+          image: foxiswho/rocketmq:4.8.0
+          imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              cpu: 450m
+              memory: 2000Mi
+            requests:
+              cpu: 400m
+              memory: 2000Mi
+          env:
+            - name: TZ
+              value: Asia/Shanghai
+            - name: JAVA_OPT
+              value: -Duser.home=/home/rocketmq
+            - name: JAVA_OPT_EXT
+              value:  -Xmn256m
+          command: ["sh","-c","mqnamesrv"]
+          ports:
+            - containerPort: 9876
+          volumeMounts:
+            - name: vol-logs
+              mountPath: /home/rocketmq/logs
+            - name: vol-store
+              mountPath: /home/rocketmq/store
+        - name: rmqbroker
+          image: foxiswho/rocketmq:4.8.0
+          imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              cpu: 440m
+              memory: 2000Mi
+            requests:
+              cpu: 400m
+              memory: 2000Mi
+          env:
+            - name: TZ
+              value: Asia/Shanghai
+            - name: JAVA_OPT_EXT
+              value: -Duser.home=/home/rocketmq -Xms1024M -Xmx1024M -Xmn256m
+          command: [ "sh","-c","mqbroker -c /etc/rocketmq/broker-b.conf" ]
+          ports:
+            - containerPort: 40909
+            - containerPort: 40911
+            - containerPort: 40912
+          volumeMounts:
+            - name: vol-logs-a
+              mountPath: /home/rocketmq/logs
+            - name: vol-store-a
+              mountPath: /home/rocketmq/store
+            - name: vol-conf
+              mountPath: /etc/rocketmq/
+        - name: rmqbroker-slave
+          image: foxiswho/rocketmq:4.8.0
+          imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              cpu: 450m
+              memory: 2000Mi
+            requests:
+              cpu: 400m
+              memory: 2000Mi
+          env:
+            - name: TZ
+              value: Asia/Shanghai
+            - name: JAVA_OPT_EXT
+              value: -Duser.home=/home/rocketmq -Xms1024M -Xmx1024M -Xmn256m
+          command: [ "sh","-c","mqbroker -c /etc/rocketmq/broker-b-s.conf" ]
+          ports:
+            - containerPort: 41909
+            - containerPort: 41911
+            - containerPort: 41912
+          volumeMounts:
+            - name: vol-logs-as
+              mountPath: /home/rocketmq/logs
+            - name: vol-store-as
+              mountPath: /home/rocketmq/store
+            - name: vol-conf
+              mountPath: /etc/rocketmq/
+        - name: rmqbroker-slave2
+          image: foxiswho/rocketmq:4.8.0
+          imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              cpu: 450m
+              memory: 2000Mi
+            requests:
+              cpu: 400m
+              memory: 2000Mi
+          env:
+            - name: TZ
+              value: Asia/Shanghai
+            - name: JAVA_OPT_EXT
+              value: -Duser.home=/home/rocketmq -Xms1024M -Xmx1024M -Xmn256m
+          command: [ "sh","-c","mqbroker -c /etc/rocketmq/broker-b-s2.conf" ]
+          ports:
+            - containerPort: 42909
+            - containerPort: 42911
+            - containerPort: 42912
+          volumeMounts:
+            - name: vol-logs-as2
+              mountPath: /home/rocketmq/logs
+            - name: vol-store-as2
+              mountPath: /home/rocketmq/store
+            - name: vol-conf
+              mountPath: /etc/rocketmq/
+      volumes:
+        - name: vol-logs
+          hostPath:
+            path: /www/k8s/foxdev/rocketmq/logs-2
+            type: Directory
+        - name: vol-store
+          hostPath:
+            path: /www/k8s/foxdev/rocketmq/store-2
+            type: Directory
+        - name: vol-conf
+          hostPath:
+            path: /www/k8s/foxdev/rocketmq/conf
+            type: Directory
+        - name: vol-logs-a
+          hostPath:
+            path: /www/k8s/foxdev/rocketmq/logs-2b
+            type: Directory
+        - name: vol-store-a
+          hostPath:
+            path: /www/k8s/foxdev/rocketmq/store-2b
+            type: Directory
+        - name: vol-logs-as
+          hostPath:
+            path: /www/k8s/foxdev/rocketmq/logs-2bs
+            type: Directory
+        - name: vol-store-as
+          hostPath:
+            path: /www/k8s/foxdev/rocketmq/store-2bs
+            type: Directory
+        - name: vol-logs-as2
+          hostPath:
+            path: /www/k8s/foxdev/rocketmq/logs-2bs2
+            type: Directory
+        - name: vol-store-as2
+          hostPath:
+            path: /www/k8s/foxdev/rocketmq/store-2bs2
+            type: Directory
