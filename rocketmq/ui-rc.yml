@@ -25,20 +25,20 @@ spec:
               cpu: 450m
               memory: 1024Mi
             requests:
-              cpu: 100m
+              cpu: 400m
               memory: 768Mi
           env:
             - name: TZ
               value: Asia/Shanghai
             - name: JAVA_OPTS
-              value: -Drocketmq.config.namesrvAddr=rocketmq:9876 -Drocketmq.config.dataPath=/root/data -Dcom.rocketmq.sendMessageWithVIPChannel=false -Duser.home=/root
+              value: -Drocketmq.config.namesrvAddr=rocketmq:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false -Duser.home=/root -Drocketmq.config.dataPath=/tmp/rocketmq-console/data -Xms768m -Xmx768m
           ports:
             - containerPort: 8080
           volumeMounts:
             - name: vol-logs
               mountPath: /root/logs
             - name: vol-conf
-              mountPath: /root/data/users.properties
+              mountPath: /tmp/rocketmq-console/data/users.properties
       volumes:
         - name: vol-logs
           hostPath:
