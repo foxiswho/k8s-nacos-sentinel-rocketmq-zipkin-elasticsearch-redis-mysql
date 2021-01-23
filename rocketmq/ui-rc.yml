@@ -36,7 +36,7 @@ spec:
             - containerPort: 8080
           volumeMounts:
             - name: vol-logs
-              mountPath: /root/data
+              mountPath: /root/logs
             - name: vol-conf
               mountPath: /root/data/users.properties
       volumes:
