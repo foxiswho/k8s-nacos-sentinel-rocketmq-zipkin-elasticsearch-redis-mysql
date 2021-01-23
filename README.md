@@ -209,6 +209,19 @@ store-b-s:  Broker(slave) store 目录
 
 
 大约几分钟后，使用rocketmq或者访问浏览器`http://192.168.0.254:30879`,即可看到 `rocketmq-console`的管理界面
+### rocketmq console  用户名和密码
+
+conf/users.properties 文件中
+
+```shell
+admin=admin,1
+```
+
+第一个`admin` 表示 `用户名`
+
+第二个`admin` 表示 `密码`
+
+`1`  表示 `管理员 角色`
 
 
 ## 使用命令查看相关信息
