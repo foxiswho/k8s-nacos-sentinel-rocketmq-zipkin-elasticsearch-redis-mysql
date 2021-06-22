@@ -1,0 +1,89 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv1
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: "redis-cluster"
+  nfs:
+    path: /data/pv1
+    server: 192.168.0.254
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv2
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: "redis-cluster"
+  nfs:
+    path: /data/pv2
+    server: 192.168.0.254
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv3
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: "redis-cluster"
+  nfs:
+    path: /data/pv3
+    server: 192.168.0.254
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv4
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: "redis-cluster"
+  nfs:
+    path: /data/pv4
+    server: 192.168.0.254
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv5
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: "redis-cluster"
+  nfs:
+    path: /data/pv5
+    server: 192.168.0.254
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv6
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: "redis-cluster"
+  nfs:
+    path: /data/pv6
+    server: 192.168.0.254
